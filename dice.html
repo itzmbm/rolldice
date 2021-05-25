@@ -1,0 +1,113 @@
+<html>
+  <head>
+    <title>Roll Dice</title>
+    <style>
+      body {
+        background: linear-gradient(to bottom, #f857a6, #ff5858);
+        font-family: 'Odibee Sans', cursive;
+        font-size: 20px;
+      }
+      h2 {
+        color: White;
+
+        font-size: 20px;
+        text-align: center;
+        padding-top: 10px;
+      }
+      .container {
+        background-color: black;
+        opacity: 0.8;
+        margin: 0 auto;
+        border-radius: 2rem 2rem 2rem 2rem;
+        width: 500px;
+        height: 600px;
+      }
+      /* ABSOLUTE POSITIONED ELEMENTS */
+      .btn {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #444;
+        background: none;
+        border: none;
+        font-family: inherit;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+        cursor: pointer;
+        font-weight: 400;
+        transition: all 0.2s;
+
+        background-color: white;
+        background-color: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(10px);
+
+        padding: 0.7rem 2.5rem;
+        border-radius: 50rem;
+        box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1);
+      }
+
+      .btn::first-letter {
+        font-size: 2.4rem;
+        display: inline-block;
+        margin-right: 0.7rem;
+      }
+
+      .btn--new {
+        top: 4rem;
+      }
+      .btn--roll {
+        top: 28.3rem;
+      }
+
+      .btn:active {
+        transform: translate(-50%, 3px);
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+      }
+
+      .btn:focus {
+        outline: none;
+      }
+
+      .dice {
+        position: absolute;
+        left: 50%;
+        top: 15.5rem;
+        transform: translateX(-50%);
+        height: 10rem;
+        box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
+      }
+      .hide {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <section class="container">
+        <h2>Roll the Dice</h2>
+      </section>
+      <img src="dice-5.png" alt="Playing dice" class="dice" />
+      <button class="btn btn--new">🔄 New game</button>
+      <button class="btn btn--roll">🎲 Roll dice</button>
+    </main>
+  </body>
+
+  <script type="text/javascript">
+    console.log('hello');
+    const rollbtn = document.querySelector('.btn--roll');
+    const newbtn = document.querySelector('.btn--new');
+    const dice = document.querySelector('.dice');
+    dice.classList.add('hide');
+
+    rollbtn.addEventListener('click', function () {
+      const random = Math.trunc(Math.random() * 6) + 1;
+      dice.classList.remove('hide');
+      dice.src = `dice-${random}.png`;
+    });
+
+    newbtn.addEventListener('click', function () {
+      dice.classList.add('hide');
+    });
+  </script>
+</html>
